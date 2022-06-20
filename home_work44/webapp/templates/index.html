@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Guess 4 numbers. Enter them separated with spaces:</p>
+        <form method="POST" action="/">
+            {% csrf_token %}
+            <input type="text" name="numbers" value=''/>
+            <input type="submit" value="Send"/>
+            <h1>Result {{ context }}</h1>
+        </form>
+</body>
+</html>
