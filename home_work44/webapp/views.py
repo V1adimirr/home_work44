@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from webapp.checker import check
+from webapp.checker import check, result_game
 
 def check_view(request):
     if request.method == "GET":
@@ -7,7 +7,12 @@ def check_view(request):
     else:
         numbers = request.POST.get("numbers")
         message = check(numbers)
-        print(message)
+        if message == list():
+            message = result_game(numbers)
+
+        context = {
+            "text": message
+        }
 
 
-        return render(request, "index.html")
+        return render(request, "result.html", context)
